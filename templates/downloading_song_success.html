@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Information About Download</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/page.css')}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div>
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 text-center mb-5">
+                        <h2 class="heading-section">Download Latest Status</h2>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="wrap">
+                            <div class="img" style="background-image:url('./static/img/beach.jpg')">
+                            </div>
+                            <div class="login-wrap p-4 p-md-5">
+                                <div class="d-flex">
+                                    <div class="w-100">
+                                        <div class="">
+                                          <!--<b style="font-size: 30px;">{{success}}</b>-->
+                                          <table class="table table-border">
+                                            <thead>
+                                              <tr>
+                                                <th>State</th>
+                                                <th>Directory</th>
+                                                <th>Music Description</th>
+                                                <th>Information About Music Download</th>
+                                                <th>Music Url</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for true_or_false__ in true_or_false_ %}
+                                                    {% if true_or_false__[0] == True %}
+                                                        <tr class="success">
+                                                            <td>Successful</td>
+                                                            <td>
+                                                                <b>{{true_or_false__[1]}} <br/>
+                                                            </td>
+                                                            <td>
+                                                                <b>{{true_or_false__[2]}} <br/>
+                                                            </td>
+                                                            <td style="padding: 16px;">
+                                                                DOWNLOADED. THIS GUIDE HAS SUCH A VIDEO FILE. IT CANNOT BE DOWNLOADED AGAIN FOR THIS REASON. YOU CAN MAKE A COPY OR CHANGE THE FILE DOWNLOAD DIRECTORY.
+                                                            </td>
+                                                            <td>{{true_or_false__[3]}}</td>
+                                                        </tr>   
+                                                    {% else %}
+                                                        <tr class="danger">
+                                                            <td>Not Successful</td>
+                                                            <td>
+                                                                <b>{{true_or_false__[1]}} <br/>
+                                                            </td>
+                                                            <td>
+                                                                <b>{{true_or_false__[2]}} <br/>
+                                                            </td>
+                                                            <td style="padding: 16px;">
+                                                                THERE IS SUCH A MUSIC FILE IN THIS DIRECTORY. YOU CANNOT DOWNLOAD THE SAME MUSIC FILE AGAIN.
+                                                            </td>
+                                                            <td>{{true_or_false__[3]}}</td>
+                                                        </tr> 
+                                                    {% endif %}
+                                                {%endfor%}
+                                            </tbody>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
